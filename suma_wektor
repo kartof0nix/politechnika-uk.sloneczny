@@ -1,0 +1,15 @@
+def sklad(kat, sila):
+    ile = (kat//90)%4
+    kat = kat%90
+    x = math.sin(math.radians(kat)) * sila
+    y = math.cos(math.radians(kat)) * sila
+
+    if(ile == 0):
+        return(x, y)
+    elif(ile == 1):
+        return(y, -x)
+    elif(ile == 2):
+        return(-x, -y)
+    elif(ile == 3):
+        return(-y, x)
+
