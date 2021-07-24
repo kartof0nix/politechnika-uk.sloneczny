@@ -2,8 +2,8 @@ import math
 def sklad(kat, sila):
     ile = (kat//90)%4
     kat = kat%90
-    x = math.sin(math.radians(kat)) * sila
-    y = math.cos(math.radians(kat)) * sila
+    x = round(math.sin(math.radians(kat)) * sila, 10)
+    y = round(math.cos(math.radians(kat)) * sila, 10)
 
     if(ile == 0):
         return(x, y)
@@ -32,7 +32,7 @@ def wektor(x, y):
     kat = math.degrees(math.asin(x/sila))
     print(kat, ile)
     kat = kat + ile*90
-    return(kat, sila)
+    return(round(kat, 10), round(sila, 10))
 
 
 
