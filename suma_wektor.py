@@ -56,7 +56,7 @@ def sum_wektorowa(*argv):
         ixy[i], yg[i] = ixy[i], yg[i]
         i+=1
 
-    print(ixy, yg)
+    #print(ixy, yg)
     sr_x = 0
     sr_y = 0
     for i in range(len(ixy)):
@@ -64,7 +64,7 @@ def sum_wektorowa(*argv):
         sr_y += yg[i]
     #sr_x/=len(ixy)
     #sr_y/=len(yg)
-    print(sr_x, sr_y)
+    #print(sr_x, sr_y)
     return(wektor(sr_x, sr_y))
 
 
