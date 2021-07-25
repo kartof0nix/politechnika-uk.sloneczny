@@ -10,8 +10,10 @@ cearth=2498320000.0000753
 eearth=0.0167
 ys=0
 xs=0
-
-
+xearth=149.6*10**9
+yearth=0
+vxearth=0
+vyearth=29788.229829307355
 def fg(msun,m2,r):
     return G*msun*m2/r**2
 def velocità(m1,r,a):
@@ -29,3 +31,13 @@ def vy(x,y):
 
 def gravity(x,y,m2):
     return fg(msun,m2,((x**2)+(y**2))**(0.5))
+
+while (True):
+    wek=wektor(xearth,yearth)
+    vxaearth,vyaearth=sklad(vector(gravity(xearth,yearth,mearth),wek.ang+180))
+    vxaearth=(vxaearth/mearth)*100000
+    vyaearth=(vyaearth/mearth)*100000
+    xearth=vxearth*100000
+    yearth=vyearth*100000
+    vyearth=vyearth+vyaearth
+    vxearth=vxearth+vxaearth
