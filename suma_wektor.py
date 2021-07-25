@@ -1,5 +1,5 @@
 import math
-
+import datetime 
 class vector:
     len = 0
     ang=0
@@ -12,8 +12,8 @@ def sklad(a):
     ile = (a.ang//90 + 1)%4
     
     kat = a.ang%90
-    x = math.sin(math.radians(kat)) * a.len
-    y = math.cos(math.radians(kat)) * a.len
+    x = round(math.sin(math.radians(kat)) * a.len, 8)
+    y = round(math.cos(math.radians(kat)) * a.len, 8)
 
     if(ile == 0):
         return(x, y)
@@ -45,24 +45,27 @@ def wektor(x, y):
     if(kat<0):
         kat+=360
     
-    return(vector(kat, sila))
+    return(vector(round(kat, 8), round(sila, 8)))
 
 def sum_wektorowa(*argv):
-    katy = []
-    sily = []
-    a=0
-    for arg in argv:
-        if(a%2 == 0):
-            katy.append(arg)
-        else:
-            sily.append(arg)
-        a+=1
-    ixy = [0] * len(katy)
-    yg = [0] * len(katy)
-    for i in range(len(katy)):
-        ixy[i], yg[i] = sklad(katy[i], sily[i])
-        ixy[i], yg[i] = round(ixy[i], 10), round(yg[i], 10)
+    ixy = [0] * len(argv)
+    yg = [0] * len(argv)
+    i=0
+    for vec in argv:
+        ixy[i], yg[i] = sklad(vec)
+        ixy[i], yg[i] = ixy[i], yg[i]
+        i+=1
+
     print(ixy, yg)
+    sr_x = 0
+    sr_y = 0
+    for i in range(len(ixy)):
+        sr_x += ixy[i]
+        sr_y += yg[i]
+    #sr_x/=len(ixy)
+    #sr_y/=len(yg)
+    print(sr_x, sr_y)
+    return(wektor(sr_x, sr_y))
 
 
 
