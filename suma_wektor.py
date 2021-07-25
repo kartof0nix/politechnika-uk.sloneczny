@@ -1,9 +1,19 @@
 import math
-def sklad(kat, sila):
-    ile = (kat//90)%4
-    kat = kat%90
-    x = round(math.sin(math.radians(kat)) * sila, 10)
-    y = round(math.cos(math.radians(kat)) * sila, 10)
+
+class vector:
+    len = 0
+    ang=0
+    def __init__(self, len, ang) -> None:
+        self.len = len
+        self.ang = ang
+
+def sklad(a):
+    a.ang = (-a.ang) + 360
+    ile = (a.ang//90 + 1)%4
+    
+    kat = a.ang%90
+    x = math.sin(math.radians(kat)) * a.len
+    y = math.cos(math.radians(kat)) * a.len
 
     if(ile == 0):
         return(x, y)
@@ -30,9 +40,31 @@ def wektor(x, y):
 
     sila = math.sqrt(x**2 + y**2)
     kat = math.degrees(math.asin(x/sila))
-    print(kat, ile)
-    kat = kat + ile*90
-    return(round(kat, 10), round(sila, 10))
+    kat = kat + (ile-1)*90
+    kat = -kat
+    if(kat<0):
+        kat+=360
+    
+    return(vector(kat, sila))
+
+def sum_wektorowa(*argv):
+    katy = []
+    sily = []
+    a=0
+    for arg in argv:
+        if(a%2 == 0):
+            katy.append(arg)
+        else:
+            sily.append(arg)
+        a+=1
+    ixy = [0] * len(katy)
+    yg = [0] * len(katy)
+    for i in range(len(katy)):
+        ixy[i], yg[i] = sklad(katy[i], sily[i])
+        ixy[i], yg[i] = round(ixy[i], 10), round(yg[i], 10)
+    print(ixy, yg)
+
+
 
 
 
