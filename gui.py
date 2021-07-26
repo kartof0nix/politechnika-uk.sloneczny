@@ -61,18 +61,34 @@ class obsluga():
         if(not self.paused):
             self.text.set("Zapauzuj")
     """
-from tkinter import *
+import tkinter as tk
+class obsluga():
+    def __init__(self):
+        self.exists = True
 
-ROOT = Tk()
-LABEL = Label(ROOT, text="Hello, world!")
-LABEL.pack()
-LOOP_ACTIVE = True
-while LOOP_ACTIVE:
-    ROOT.update()
-    USER_INPUT = input("Give me your command! Just type \"exit\" to close: ")
-    if USER_INPUT == "exit":
-        ROOT.quit()
-        LOOP_ACTIVE = False
-    else:
-        LABEL = Label(ROOT, text=USER_INPUT)
-        LABEL.pack()
+        self.main_loop_int = 0.01
+        self.paused = True
+        self.root = tk.Tk()
+        self.text = tk.StringVar()
+        self.text.set("Test")
+        #self.label = tk.Label(self.root, textvariable=self.text)
+
+        self.menu = tk.Frame(self.root, )
+        self.p_button = tk.Button(self.menu, text = "Pause")
+        self.p_button ["command"] = self.pause
+        self.p_button.pack(side="left", padx=10, pady=5)
+        self.stop_b = tk.Button(self.menu, text="Exit", command=self.exit)
+        self.stop_b.pack(side="right", padx=10, pady=5)
+        self.menu.pack()
+        #self.label.pack()
+        #self.root.mainloop()
+        self.root.update()
+    def pause(self):
+        self.paused = not self.paused
+        if(self.paused):  
+            self.p_button[ "text" ] = "Unpause"
+        else:
+            self.p_button[ "text" ] = "Pause" 
+    def exit(self):
+        self.root.destroy()
+        self.exists = False

@@ -1,5 +1,5 @@
 from suma_wektor import *
-from turtle import *
+#from turtle import *
 
 
 
@@ -28,11 +28,11 @@ class planeta():
     vyearth=29788.229829307355 #m/s
     #vyearth=6788.229829307355
 
-    def __init__(self, name, color, m_planet = 5.972*10**24, x_cor_planet = 149.6*10**9, y_cor_earth = 0, V_xearth = 0, V_yearth=29788.229829307355) -> None:
-        planety.append(self)
+    def __init__(self, name, color, size, m_planet = 5.972*10**24, x_cor_planet = 149.6*10**9, y_cor_earth = 0, V_xearth = 0, V_yearth=29788.229829307355) -> None:
         self.num = len(planety)-1
         self.color = color
         self.name = name
+        self.v_size = size 
         self.mearth = m_planet
         self.xearth = x_cor_planet
         self.yearth = y_cor_earth
@@ -43,8 +43,8 @@ class planeta():
         pass
 
     def fg(self, msun,m2,r):
-        #if(r==0):
-            #return 0
+        if(r==0):
+            return 0
         return self.G*msun*m2/r**2
     def velocita(self, m1,r,a):
         return (self.G*m1*((2/r)-(1/a)))**(1/2)
