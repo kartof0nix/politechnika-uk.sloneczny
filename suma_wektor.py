@@ -39,19 +39,21 @@ def wektor(x, y):
         x , y= y, -x
 
     sila = math.sqrt(x**2 + y**2)
+    if(sila==0):
+        return vector(0, 0)
     kat = math.degrees(math.asin(x/sila))
     kat = kat + (ile-1)*90
     kat = -kat
     if(kat<0):
         kat+=360
     
-    return(vector(round(kat, 8), round(sila, 8)))
+    return(vector(round(sila, 8), round(kat, 8)))
 
-def sum_wektorowa(*argv):
-    ixy = [0] * len(argv)
-    yg = [0] * len(argv)
+def sum_wektorowa(vectors):
+    ixy = [0] * len(vectors)
+    yg = [0] * len(vectors)
     i=0
-    for vec in argv:
+    for vec in vectors:
         ixy[i], yg[i] = sklad(vec)
         ixy[i], yg[i] = ixy[i], yg[i]
         i+=1
@@ -67,8 +69,3 @@ def sum_wektorowa(*argv):
 #a = sum_wektorowa(vector(2, 0), vector(4.47213595, 90 -  26.56505117707799 ), vector(5, 323.13010235415595), vector(1, 270))
 #print(a.ang)
 #print(a.len)
-
-
-
-
-
